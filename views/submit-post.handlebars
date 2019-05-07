@@ -11,23 +11,23 @@
     </script>
 </head>
 <div class="header">
-  <img src="../public/images/codeblog-logo.png" height= "70px" alt="codeblog logo">
+  <a href="/"><img src="../public/images/codeblog-logo.png" height= "70px" alt="codeblog logo"></a>
 </div>
 <div class="row">
     <div class="leftcolumn">
       <div class="card">
         <form action="" method="post">
             <div>
-                <label for="title">Title:</label>
-                <input type="text" id="title-input" name="post-title">
+                <label class="submit-form-label" for="title">Title:</label>
+                <input type="text" class="submit-form-input" id="title-input" name="post-title">
             </div>
             <div>
-                <label for="header-image">Header Image URL:</label>
-                <input type="text" id="header-image-input" name="header-image">
+                <label class="submit-form-label"for="header-image">Header Image URL:</label>
+                <input type="text" class="submit-form-input" id="header-image-input" name="header-image">
             </div>
             <div>
-                <label for="post-content">Content:</label>
-                <textarea id="post-content-input" name="post-content"></textarea>
+                <label class="submit-form-label" for="post-content">Content:</label>
+                <textarea id="post-content-input" class="submit-form-input" name="post-content"></textarea>
             </div>
             
         </form>
@@ -49,8 +49,11 @@
   </div>
 </div>
 </div>
-<div class="footer">
+<div class="footer" id="footer">
   <h2>Footer</h2>
+    <div>
+        <a href="/">Home</a> | <a href="/submit">Submit</a>
+  </div>
 </div>
 
 
