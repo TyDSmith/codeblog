@@ -14,13 +14,14 @@ module.exports = function(app) {
   });
 
   app.get("/single-post", function(req, res) {
-    //   db.Example.findAll({}).then(function(dbExamples) {
-    //     res.render("index", {
-    //       msg: "Welcome!",
-    //       examples: dbExamples
-    //     });
-    //   });
+
     res.render("single-post");
+  
+    });
+
+  app.get("/submit", function(req, res) {
+
+    res.render("submit-post");
   
     });
   // Load example page and pass in an example by id
