@@ -9,8 +9,9 @@ A programming focused blog
 * Handlebars
 
 MySQL database entry:
-* id
+* postID
 * title
 * content
 * header image
 * author
+* publish_date

@@ -1,6 +1,5 @@
 var db = require("../models");
 
-var testVar = 55;
 
 module.exports = function(app) {
   // Load index page
@@ -46,7 +45,7 @@ module.exports = function(app) {
   app.get('/post/:postID', function (req, res) {
 
     console.log("choice id is " + req.params.id);
-    
+
 
   });
 };
