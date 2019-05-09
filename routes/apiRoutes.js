@@ -2,10 +2,20 @@ var db = require("../models");
 
 module.exports = function(app) {
   app.get("/api/blog", function(req, res) {
-    res.json(PORT);
-    // db.get({}).then(function(db) {
-    //   res.json(db);
+    console.log("howdy");
+
+    // var sql = "SELECT * FROM Blogs";
+    // connection.query(sql, function(err){
+    //   if (err) {
+    //     console.log("oops");
+    //     throw err;
+    //   }
+    //   res.json(sql);
     // });
+    db.select(function(data){
+      var bloggers_db = { Blogs: data};
+      res.json(bloggers_db);
+    });
   });
 
   // Create a new example
