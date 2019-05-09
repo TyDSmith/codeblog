@@ -7,6 +7,7 @@ A programming focused blog with user-submitted content
 * Node
 * MySQL
 * Handlebars
+* dotenv
 
 MySQL database entry:
 * postID
