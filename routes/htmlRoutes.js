@@ -1,5 +1,7 @@
 var db = require("../models");
 
+var testVar = 55;
+
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
@@ -37,4 +39,17 @@ module.exports = function(app) {
   app.get("*", function(req, res) {
     res.render("404");
   });
+
+
+  //create unique URL for each blog post (by ID)
+
+  app.get('/post/:postID', function (req, res) {
+
+    console.log("choice id is " + req.params.id);
+    
+
+  });
 };
+
+
+
