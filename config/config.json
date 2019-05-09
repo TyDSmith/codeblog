@@ -12,7 +12,9 @@
     "database": "bloggers_db",
     "host": "localhost",
     "dialect": "mysql",
-    "logging": false
+    "logging": false,
+    "Julian_DB": "secretpassword"
+
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
