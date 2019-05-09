@@ -8,13 +8,13 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 
-con.connect(function(err) {
-  if (err) throw err;
-  con.query("SELECT * FROM posts", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
-});
+// con.connect(function(err) {
+//   if (err) throw err;
+//   con.query("SELECT * FROM posts", function (err, result, fields) {
+//     if (err) throw err;
+//     console.log(result);
+//   });
+// });
 
 
 // Middleware
