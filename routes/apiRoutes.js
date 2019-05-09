@@ -8,6 +8,11 @@ module.exports = function(app) {
   //   });
   // });
 
+  app.get("/api/", function(req, res) {
+    res.JSON(connection.connection);
+  });
+  
+
   // Create a new example
   // app.post("/api/examples", function(req, res) {
   //   db.Example.create(req.body).then(function(dbExample) {
