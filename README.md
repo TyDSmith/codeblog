@@ -1,6 +1,6 @@
 # codeblog
 
-A programming focused blog
+A programming focused blog with user-submitted content 
 
 ## The following technologies were used
 * Express
