@@ -2,10 +2,20 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 
-var db = require("./models");
+//var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
+
+
+con.connect(function(err) {
+  if (err) throw err;
+  con.query("SELECT * FROM posts", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+  });
+});
+
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -34,14 +44,17 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
+// db.sequelize.sync(syncOptions).then(function() {
+
+  
+// });
+
+app.listen(PORT, function() {
+  console.log(
+    "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+    PORT,
+    PORT
+  );
 });
 
 module.exports = app;
