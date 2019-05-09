@@ -1,4 +1,5 @@
 # codeblog
+<<<<<<< HEAD
 
 A programming focused blog
 
@@ -14,3 +15,5 @@ MySQL database entry:
 * content
 * header image
 * author
+=======
+>>>>>>> 8ecee782b047e5535db61179811e97169dab3434

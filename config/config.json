@@ -7,9 +7,15 @@
     "dialect": "mysql"
   },
   "test": {
+<<<<<<< HEAD
     "username": "ty",
     "password": "password",
     "database": "testdb",
+=======
+    "username": "root",
+    "password": "",
+    "database": "bloggers_db",
+>>>>>>> 8ecee782b047e5535db61179811e97169dab3434
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
