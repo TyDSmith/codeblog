@@ -1,5 +1,6 @@
 # codeblog
 
+
 A programming focused blog
 
 ## The following technologies were used
@@ -14,3 +15,4 @@ MySQL database entry:
 * content
 * header image
 * author
+
