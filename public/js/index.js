@@ -104,3 +104,19 @@ $("#header").load("../htmlTemplates/header.html");
 $("#sidebar").load("../htmlTemplates/sidebar.html");  
 $("#footer").load("../htmlTemplates/footer.html"); 
 };
+
+function getPost(){
+$.ajax({
+  url: "api/blog",
+  type: "GET",
+  success: function(data){
+    console.log(data);
+  }
+});
+};
+getPost();
+
+// api/blog is returning the post. need a route to return 3 most recent to display on front page.
+// setup for loop to go through data objects.
+// inside of loop, using handlebars/jquery to append dynmaclly
+// fiddle with it.

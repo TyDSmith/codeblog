@@ -25,15 +25,40 @@ module.exports = function(app) {
 
   // });
 
+  // route to search by id
   app.get("/api/post/:id", function(req,res){
     console.log("api side")
     console.log("id: ", req.params.id)
-    return("hi")
+    // return("hi")
+     var sql = `SELECT * FROM Blogs WHERE post_id = ${req.params.id}`
+     connection.query(sql, function(err, sqlResult){
 
+      if (err) {
+          console.log("Oops somethings wrong");
+          throw err;
+      }
+      res.json(sqlResult);
+    });
     // db find the row with the post_id = id
 
   });
 
+  // app.get("/api/post/author/:author", function(req,res){
+  //   console.log("api side")
+  //   console.log("author: ", req.params.author)
+
+  //    var sql = `SELECT * FROM Blogs WHERE author = ${req.params.author}`
+  //    connection.query(sql, function(err, sqlResult){
+
+  //     if (err) {
+  //         console.log("Oops somethings wrong");
+  //         throw err;
+  //     }
+  //     res.json(sqlResult);
+  //   });
+  //   // db find the row with the post_id = id
+
+  // });
 
   // Create a new example
   // app.post("/api/examples", function(req, res) {
