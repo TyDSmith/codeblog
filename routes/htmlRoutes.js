@@ -1,4 +1,23 @@
 var db = require("../models");
+var axios = require("axios");
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+
+  host: "localhost",
+  user: "ty",
+  password: "password",
+  database: "test_db_blog"
+
+});
+
+connection.connect(function(err) {
+  if (err) throw err;
+  connection.query("SELECT * FROM Blogs", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+  });
+});
 
 
 module.exports = function(app) {
@@ -10,16 +29,37 @@ module.exports = function(app) {
   });
 
   app.get("/single-post", function(req, res) {
-
     res.render("single-post");
-  
     });
+
+
+    app.get("/post/:id", function(req, res) {
+      // ajax call api/post/id{ render}
+      console.log("I am in the htmlroute post/id")
+      console.log("req.params.id html", req.params.id)
+      ////axios.get("/api/post/").then(function(response) {
+        //console.log(response);
+        // with thr responsoe you will render the page
+
+        //call the db and render the info
+        connection.query("SELECT * FROM Blogs where post_id=" + req.params.id, function (err, result, fields) {
+          if (err) throw err;
+          console.log(result);
+          //send to render
+        });
+        
+      });
+
+
+      //res.render("single-post");
+      
 
   app.get("/submit", function(req, res) {
-
     res.render("submit-post");
-  
     });
+
+
+
 
 
   // Render 404 page for any unmatched routes

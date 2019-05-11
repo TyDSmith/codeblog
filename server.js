@@ -18,6 +18,30 @@ var PORT = process.env.PORT || 3000;
 // });
 
 
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+
+    host: "localhost",
+    user: "ty",
+    password: "password",
+    database: "test_db_blog"
+
+});
+
+connection.connect(function(err) {
+    if (err) throw err;
+    connection.query("SELECT * FROM Blogs", function (err, result, fields) {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
+
+module.exports = connection;
+
+
+
+
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

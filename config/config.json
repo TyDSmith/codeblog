@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "ty",
-    "password": "password",
-    "database": "exampledb",
     "host": "localhost",
+    "user": "ty",
+    "password": "password",
+    "database": "test_db_blog",
     "dialect": "mysql"
   },
   "test": {
