@@ -8,6 +8,7 @@ A programming focused blog with user-submitted content
 * MySQL
 * Handlebars
 * dotenv
+* axios
 
 MySQL database entry:
 * postID
