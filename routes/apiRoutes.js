@@ -1,20 +1,35 @@
+var connection = require("../config/connection");
 var db = require("../models");
+// var mysql = require("mysql");
+// var connection = mysql.createConnection({
+//   host: "localhost",
+//   port: 3000,
+//   user: "webuser",
+//   password: "UCR",
+//   database: "bloggers_db"
+// });
+
+// connection.connect(function(err) {
+//   if (err) {
+//       console.log("(ノ°益°)ノ");
+//       return;
+//   }
+//   console.log("MySQL Connected: "
+//   + connection.threadId);
+// });
+
 
 module.exports = function(app) {
   app.get("/api/blog", function(req, res) {
     console.log("howdy");
-
-    // var sql = "SELECT * FROM Blogs";
-    // connection.query(sql, function(err){
-    //   if (err) {
-    //     console.log("oops");
-    //     throw err;
-    //   }
-    //   res.json(sql);
-    // });
-    db.select(function(data){
-      var bloggers_db = { Blogs: data};
-      res.json(bloggers_db);
+    var sql = "SELECT * FROM Blogs;"
+    connection.query(sql, function(err, sqlResult){
+      console.log("oof");
+      if (err) {
+          console.log("(ノ°益°)ノ");
+          throw err;
+      }
+      res.json(sqlResult);
     });
   });
 
