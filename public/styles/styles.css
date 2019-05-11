@@ -35,7 +35,6 @@ body {
 .fakeimg {
   background-color: #aaa;
   width: 100%;
-  
 }
 
 /* Add a card effect for articles */
@@ -69,7 +68,6 @@ body {
 
 /* Submit Page */
 
-
 #post-content-input{
   width: 100%;
   height: 250px;
@@ -84,6 +82,36 @@ body {
   width: 100%;
   line-height: 2em;
 }
+
+
+/* Single Post Pages */
+
+.single-post-title{
+  text-transform: uppercase; 
+}
+
+.single-post-meta{
+  color: rgb(114, 114, 114);
+  font-size: 1em;
+}
+.single-post-image{
+  width: 100%;
+  background: green;
+  margin-bottom: 10px;
+}
+
+.single-post-content{
+  color: black;
+
+
+}
+
+.single-post-content p{
+  margin-bottom: 10px;
+  font-size: 1.1em;
+
+}
+
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {

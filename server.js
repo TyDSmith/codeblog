@@ -1,11 +1,46 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+require('dotenv').config()
 
 //var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
+
+
+// con.connect(function(err) {
+//   if (err) throw err;
+//   con.query("SELECT * FROM posts", function (err, result, fields) {
+//     if (err) throw err;
+//     console.log(result);
+//   });
+// });
+
+
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+
+    host: "localhost",
+    user: "ty",
+    password: "password",
+    database: "test_db_blog"
+
+});
+
+connection.connect(function(err) {
+    if (err) throw err;
+    connection.query("SELECT * FROM Blogs", function (err, result, fields) {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
+
+module.exports = connection;
+
+
+
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
