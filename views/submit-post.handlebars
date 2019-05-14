@@ -12,8 +12,9 @@
 </head>
 <div class="header" id="header"></div>
 <div class="row">
-    <div class="leftcolumn">
+    <div class="fullcolumn">
       <div class="card">
+          <h2 style="font-family: 'IBM Plex Sans', sans-serif;">Create A Post</h2>
         <form action="" method="post">
             <div>
                 <label class="submit-form-label" for="title">Title:</label>
@@ -27,11 +28,16 @@
                 <label class="submit-form-label" for="post-content">Content:</label>
                 <textarea id="post-content-input" class="submit-form-input" name="post-content"></textarea>
             </div>
+            <div class="submit-post-button">
+                <button type="submit" value="Submit" class="submit-post-button">Submit</button>
+            </div>
+            
+
         </form>
       </div>
     </div>
 
-    <div class="rightcolumn" id="sidebar"></div>
+    {{!-- <div class="rightcolumn" id="sidebar"></div> --}}
 
 </div>
 

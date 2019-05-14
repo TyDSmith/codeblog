@@ -1,5 +1,7 @@
-var connection = require("../config/connection");
-
+// var db = require("../models");
+var axios = require("axios");
+// import $ from 'jquery';
+var connection = require('../server')
 
 
 module.exports = function(app) {
@@ -17,9 +19,9 @@ module.exports = function(app) {
   });
 
   app.get("/api/", function(req, res) {
-    console.log("I am here")
-    //res.JSON(connection.connection);
-  });
+    console.log("I am here");
+
+});
   
   // app.get("", function(req, res) {
 
@@ -28,10 +30,22 @@ module.exports = function(app) {
   // route to search by id
   app.get("/api/post/:id", function(req,res){
     console.log("api side")
+<<<<<<< HEAD
     console.log("id: ", req.params.id)
     // return("hi")
      var sql = `SELECT * FROM Blogs WHERE post_id = ${req.params.id}`
      connection.query(sql, function(err, sqlResult){
+=======
+    console.log("id: ", req.params.id);
+    connection.query("SELECT * FROM Blogs where id =" + req.params.id, function (err, result, fields) {
+      if (err) throw err;
+      res.json(result);
+      console.log(result);
+    //res.JSON(connection.connection);
+    
+  })
+    return("hi")
+>>>>>>> 2a165ea9fb42311222645b6f4e8e10fdf54d9b99
 
       if (err) {
           console.log("Oops somethings wrong");

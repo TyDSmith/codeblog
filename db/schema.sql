@@ -1,6 +1,6 @@
-Create Database bloggers_db
+-- Create Database bloggers_db
 
-Use bloggers_db
+-- Use bloggers_db
 
 Create Table Blogs (
     id INT Primary Key Auto_Increment,

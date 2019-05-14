@@ -1,36 +1,26 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-require('dotenv').config()
+require('dotenv').config();
+var mysql = require('mysql');
 
 //var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-
-// con.connect(function(err) {
-//   if (err) throw err;
-//   con.query("SELECT * FROM posts", function (err, result, fields) {
-//     if (err) throw err;
-//     console.log(result);
-//   });
-// });
-
-
-var mysql = require('mysql');
-
 var connection = mysql.createConnection({
-
-    host: "localhost",
-    user: "webuser",
-    password: "UCR",
-    database: "bloggers_db"
-
+    host: "v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "d8sfxcrhux4qrfh8",
+    password: "na0qh0mw3v80fvu7",
+    port: 3306,
+    database: "pq207a6dbgeya65s"
 });
+
 
 connection.connect(function(err) {
     if (err) throw err;
+    console.log("connection done");
     connection.query("SELECT * FROM Blogs", function (err, result, fields) {
       if (err) throw err;
       // console.log(result);
@@ -38,8 +28,6 @@ connection.connect(function(err) {
   });
 
 module.exports = connection;
-
-
 
 
 // Middleware
