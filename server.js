@@ -22,22 +22,22 @@ var connection = mysql.createConnection({
 
 });
 
-connection.connect(function(err) {
-    if (err) throw err;
-    console.log("connection done");
-    connection.query("SELECT * ", function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
-    });
-  });
-
 // connection.connect(function(err) {
 //     if (err) throw err;
-//     connection.query("SELECT * FROM Blogs", function (err, result, fields) {
+//     console.log("connection done");
+//     connection.query("SELECT * ", function (err, result, fields) {
 //       if (err) throw err;
 //       console.log(result);
 //     });
 //   });
+
+connection.connect(function(err) {
+    if (err) throw err;
+    connection.query("SELECT * FROM Blogs", function (err, result, fields) {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
 
 module.exports = connection;
 
