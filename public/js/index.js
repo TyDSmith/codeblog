@@ -4,6 +4,7 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
@@ -109,10 +110,24 @@ function getPost(){
 $.ajax({
   url: "api/blog",
   type: "GET",
-  success: function(data){
-    console.log(data);
-  }
+  success: function(testPost){
+    console.log(testPost);
+    console.log(testPost[0].content);
+    $("#header").append('<p>hello world, this is nak</p>');
+  },
 });
+// var data = [
+//   author,
+//   content,
+//   header_img,
+//   post_id,
+//   publish_date,
+//   title
+// ]
+// for (i = 0; i < data.length; i++) {
+//   console.log("Is this your data? ", data);
+//   // append data here
+// };
 };
 getPost();
 

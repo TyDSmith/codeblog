@@ -1,4 +1,3 @@
-var db = require("../models");
 // var axios = require("axios");
 var mysql = require('mysql');
 
@@ -15,7 +14,7 @@ connection.connect(function(err) {
   if (err) throw err;
   connection.query("SELECT * FROM Blogs", function (err, result, fields) {
     if (err) throw err;
-    console.log(result);
+    // console.log(result);
   });
 });
 
@@ -29,7 +28,20 @@ module.exports = function(app) {
   });
 
   app.get("/single-post", function(req, res) {
-    res.render("single-post");
+    var sql = "SELECT * FROM Blogs;"
+    connection.query(sql, function(err, sqlResult){
+
+      if (err) {
+          console.log("Oops somethings wrong");
+          throw err;
+      }
+      // console.log('single-post');
+      console.log(sqlResult[0]);
+      var hbsObject = sqlResult[0];
+      res.render('single-post', hbsObject);
+      // res.json(sqlResult);
+    });
+    // res.render("single-post");
     });
 
 
