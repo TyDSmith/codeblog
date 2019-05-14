@@ -22,10 +22,10 @@ var mysql = require('mysql');
 
 var connection = mysql.createConnection({
 
-    host: "localhost",
-    user: "ty",
-    password: "password",
-    database: "test_db_blog"
+    host: "http://v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/",
+    user: "d8sfxcrhux4qrfh8",
+    password: "na0qh0mw3v80fvu7",
+    database: "pq207a6dbgeya65s"
 
 });
 
