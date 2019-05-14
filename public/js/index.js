@@ -4,6 +4,7 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
@@ -104,3 +105,33 @@ $("#header").load("../htmlTemplates/header.html");
 $("#sidebar").load("../htmlTemplates/sidebar.html");  
 $("#footer").load("../htmlTemplates/footer.html"); 
 };
+
+function getPost(){
+$.ajax({
+  url: "api/blog",
+  type: "GET",
+  success: function(testPost){
+    console.log(testPost);
+    console.log(testPost[0].content);
+    $("#header").append('<p>hello world, this is nak</p>');
+  },
+});
+// var data = [
+//   author,
+//   content,
+//   header_img,
+//   post_id,
+//   publish_date,
+//   title
+// ]
+// for (i = 0; i < data.length; i++) {
+//   console.log("Is this your data? ", data);
+//   // append data here
+// };
+};
+getPost();
+
+// api/blog is returning the post. need a route to return 3 most recent to display on front page.
+// setup for loop to go through data objects.
+// inside of loop, using handlebars/jquery to append dynmaclly
+// fiddle with it.

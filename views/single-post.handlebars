@@ -1,8 +1,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/styles/styles.css">
-    <script src="../public/js/index.js"></script>
+    <link rel="stylesheet" href="./styles/styles.css">
+    {{!-- <script src="../public/js/index.js"></script> --}}
     <title>codeblog</title>
 </head>
 <div class="header" id="header"></div>
@@ -24,6 +24,7 @@
           
           <p>The standard chunk of <strong>Lorem Ipsum </strong> used since the 1500s is reproduced below <a href="#">for those interested.</a>  </p> <p>Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
           </p>
+          <p>{{this.content}}</p>
           </div>
       </div>
     </div>
@@ -35,5 +36,5 @@
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script src="./js/index.js"></script>
 

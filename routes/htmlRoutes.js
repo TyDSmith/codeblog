@@ -1,5 +1,4 @@
-var db = require("../models");
-var axios = require("axios");
+// var axios = require("axios");
 var mysql = require('mysql');
 var connection = require('../server');
 
@@ -19,7 +18,20 @@ module.exports = function(app) {
   });
 
   app.get("/single-post", function(req, res) {
-    res.render("single-post");
+    var sql = "SELECT * FROM Blogs;"
+    connection.query(sql, function(err, sqlResult){
+
+      if (err) {
+          console.log("Oops somethings wrong");
+          throw err;
+      }
+      // console.log('single-post');
+      console.log(sqlResult[0]);
+      var hbsObject = sqlResult[0];
+      res.render('single-post', hbsObject);
+      // res.json(sqlResult);
+    });
+    // res.render("single-post");
     });
 
   app.get("/post/:id", function(req, res) {

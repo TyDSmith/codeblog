@@ -1,19 +1,18 @@
 {
   "development": {
-    "host": "localhost",
-    "user": "ty",
+    "username": "ty",
     "password": "password",
-    "database": "test_db_blog",
+    "database": "exampledb",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": "",
+    "username": "webuser",
+    "password": "UCR",
     "database": "bloggers_db",
     "host": "localhost",
     "dialect": "mysql",
-    "logging": false,
-    "Julian_DB": "secretpassword"
+    "logging": false
 
   },
   "production": {
