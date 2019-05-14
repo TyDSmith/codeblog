@@ -24,6 +24,7 @@ connection.connect(function(err) {
     connection.query("SELECT * FROM Blogs", function (err, result, fields) {
       if (err) throw err;
       console.log(result);
+      connection.release();
     });
   });
 
