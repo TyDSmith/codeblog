@@ -48,7 +48,6 @@ module.exports = function(app) {
     });
     // db find the row with the post_id = id
 
-  });
 
   // app.get("/api/post/author/:author", function(req,res){
   //   console.log("api side")
@@ -63,7 +62,7 @@ module.exports = function(app) {
   //     }
   //     res.json(sqlResult);
   //   });
-  //   // db find the row with the post_id = id
+  // //   // db find the row with the post_id = id
 
   // });
 

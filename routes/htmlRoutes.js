@@ -17,18 +17,23 @@ module.exports = function(app) {
   res.render("index");
   });
 
-  app.get("/single-post", function(req, res) {
-    var sql = "SELECT * FROM Blogs;"
-    connection.query(sql, function(err, sqlResult){
 
+  app.get("/single-post", function(req, res) {
+    res.render('single-post');
+  });
+
+
+  app.get("/post/:id", function(req, res) {
+    var sql = "SELECT * FROM Blogs where post_id=" + req.params.id + ";";
+    connection.query(sql, function(err, sqlResult){
       if (err) {
           console.log("Oops somethings wrong");
           throw err;
       }
-      // console.log('single-post');
-      console.log(sqlResult[0]);
-      var hbsObject = sqlResult[0];
-      res.render('single-post', hbsObject);
+      console.log(sqlResult);
+      console.log('running');
+      var hbsObject = sqlResult;
+      res.render('single-post', hbsObject.content);
       // res.json(sqlResult);
     });
     // res.render("single-post");
@@ -37,25 +42,18 @@ module.exports = function(app) {
   app.get("/post/:id", function(req, res) {
     // ajax call api/post/id{ render}
     console.log("req.params.id html", req.params.id)
-    ////axios.get("/api/post/").then(function(response) {
-      //console.log(response);
-      // with thr responsoe you will render the page
 
-      //call the db and render the info
       connection.query("SELECT * FROM Blogs where post_id=" + req.params.id, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         res.render("single-post");
 
-        insertPostInfo();
-        //send to render
+        // insertPostInfo();
+  
       });
       
     });
 
-
-      //res.render("single-post");
-      
 
   app.get("/submit", function(req, res) {
     res.render("submit-post");
@@ -65,24 +63,11 @@ module.exports = function(app) {
   app.get("*", function(req, res) {
     res.render("404");
   });
-
-
-
-
-  //create unique URL for each blog post (by ID)
-
-  // app.get('/post/:postID', function (req, res) {
-
-  //   console.log("choice id is " + req.params.id);
-
-
-  // });
 };
 
 
-
-function insertPostInfo(){
-  console.log("woop");
-  $('.single-post-content').html("testttttt");
-  $('.single-post-content').append("test2");
-};
+// function insertPostInfo(){
+//   console.log("woop");
+//   $('.single-post-content').html("testttttt");
+//   $('.single-post-content').append("test2");
+// };

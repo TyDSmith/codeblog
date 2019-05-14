@@ -101,9 +101,17 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 //Populate HTML Divs from templates  (footer, header, sidebar, etc)
 function onload(){
-$("#header").load("../htmlTemplates/header.html");
-$("#sidebar").load("../htmlTemplates/sidebar.html");  
-$("#footer").load("../htmlTemplates/footer.html"); 
+  $("#header").load("../htmlTemplates/header.html");
+  $("#sidebar").load("../htmlTemplates/sidebar.html");  
+  $("#footer").load("../htmlTemplates/footer.html"); 
+};
+
+function postonload(){
+  console.log("single post on load");
+    $('.single-post-content').html("testttttt");
+    $('#single-post-content').append("test2");
+    $("#footer").load("../htmlTemplates/footer.html"); 
+
 };
 
 function getPost(){
@@ -113,7 +121,8 @@ $.ajax({
   success: function(testPost){
     console.log(testPost);
     console.log(testPost[0].content);
-    $("#header").append('<p>hello world, this is nak</p>');
+    // for(i=0; i<testPost)
+    // $("#header").append('<p>hello world, this is nak</p>' + result);
   },
 });
 // var data = [
