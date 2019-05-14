@@ -1,7 +1,15 @@
 var db = require("../models");
 var axios = require("axios");
 var mysql = require('mysql');
-var connection = require('../server')
+var connection = require('../server');
+
+var jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const { window } = new JSDOM();
+const { document } = (new JSDOM('')).window;
+global.document = document;
+
+var $ = jQuery = require('jquery')(window);
 
 
 module.exports = function(app) {
@@ -22,10 +30,12 @@ module.exports = function(app) {
       // with thr responsoe you will render the page
 
       //call the db and render the info
-      connection.query("SELECT * FROM Blogs where id=" + req.params.id, function (err, result, fields) {
+      connection.query("SELECT * FROM Blogs where post_id=" + req.params.id, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         res.render("single-post");
+
+        insertPostInfo();
         //send to render
       });
       
@@ -59,3 +69,8 @@ module.exports = function(app) {
 
 
 
+function insertPostInfo(){
+  console.log("woop");
+  $('.single-post-content').html("testttttt");
+  $('.single-post-content').append("test2");
+};
