@@ -35,22 +35,22 @@ module.exports = function(app) {
     });
 
 
-    app.get("/post/:id", function(req, res) {
-      // ajax call api/post/id{ render}
-      console.log("I am in the htmlroute post/id")
-      console.log("req.params.id html", req.params.id)
-      ////axios.get("/api/post/").then(function(response) {
-        //console.log(response);
-        // with thr responsoe you will render the page
+  app.get("/post/:id", function(req, res) {
+    // ajax call api/post/id{ render}
+    console.log("I am in the htmlroute post/id")
+    console.log("req.params.id html", req.params.id)
+    ////axios.get("/api/post/").then(function(response) {
+      //console.log(response);
+      // with thr responsoe you will render the page
 
-        //call the db and render the info
-        connection.query("SELECT * FROM Blogs where post_id=" + req.params.id, function (err, result, fields) {
-          if (err) throw err;
-          console.log(result);
-          //send to render
-        });
-        
+      //call the db and render the info
+      connection.query("SELECT * FROM Blogs where post_id=" + req.params.id, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        //send to render
       });
+      
+    });
 
 
       //res.render("single-post");
@@ -59,10 +59,6 @@ module.exports = function(app) {
   app.get("/submit", function(req, res) {
     res.render("submit-post");
     });
-
-
-
-
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
