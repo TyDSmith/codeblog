@@ -1,6 +1,8 @@
 var db = require("../models");
 var axios = require("axios");
 // import $ from 'jquery';
+var connection = require('../server')
+
 
 module.exports = function(app) {
   console.log("apiroutes")
@@ -12,9 +14,9 @@ module.exports = function(app) {
   // });
 
   app.get("/api/", function(req, res) {
-    console.log("I am here")
-    //res.JSON(connection.connection);
-  });
+    console.log("I am here");
+
+});
   
   // app.get("", function(req, res) {
 
@@ -22,7 +24,14 @@ module.exports = function(app) {
 
   app.get("/api/post/:id", function(req,res){
     console.log("api side")
-    console.log("id: ", req.params.id)
+    console.log("id: ", req.params.id);
+    connection.query("SELECT * FROM Blogs where id =" + req.params.id, function (err, result, fields) {
+      if (err) throw err;
+      res.json(result);
+      console.log(result);
+    //res.JSON(connection.connection);
+    
+  })
     return("hi")
 
     // db find the row with the post_id = id

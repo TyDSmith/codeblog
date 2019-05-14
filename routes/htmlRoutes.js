@@ -16,7 +16,6 @@ module.exports = function(app) {
 
   app.get("/post/:id", function(req, res) {
     // ajax call api/post/id{ render}
-    console.log("I am in the htmlroute post/id")
     console.log("req.params.id html", req.params.id)
     ////axios.get("/api/post/").then(function(response) {
       //console.log(response);
