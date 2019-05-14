@@ -99,8 +99,8 @@ $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 //Populate HTML Divs from templates  (footer, header, sidebar, etc)
-function onload(){
-$("#header").load("../htmlTemplates/header.html");
-$("#sidebar").load("../htmlTemplates/sidebar.html");  
-$("#footer").load("../htmlTemplates/footer.html"); 
-};
+function onload() {
+  $("#header").load("../htmlTemplates/header.html");
+  $("#sidebar").load("../htmlTemplates/sidebar.html");
+  $("#footer").load("../htmlTemplates/footer.html");
+}

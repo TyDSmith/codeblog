@@ -1,5 +1,5 @@
 // "use strict";
-
+var mysql = require("mysql")
 // var fs = require("fs");
 // var path = require("path");
 // var Sequelize = require("sequelize");
@@ -7,6 +7,22 @@
 // var env = process.env.NODE_ENV || "development";
 // var config = require(__dirname + "/../config/config.json")[env];
 // var db = {};
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL)
+} else {
+    connection = mysql.createConnection({
+        host: "",
+        user: "",
+        password: "",
+        database: ""
+    });
+};
+
+connection.connect(function (err) {
+    if (err) {
+        console.log.error("connection error: " + err)
+    }
+})
 
 // if (config.use_env_variable) {
 //   var sequelize = new Sequelize(process.env[config.use_env_variable]);
@@ -39,4 +55,4 @@
 // db.sequelize = sequelize;
 // db.Sequelize = Sequelize;
 
-// module.exports = db;
+module.exports = connection;
