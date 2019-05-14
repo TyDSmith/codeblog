@@ -16,6 +16,7 @@ module.exports = function (app) {
     res.json();
     console.log("I am here");
     res.json(connection.connect);
+    //the response.json is either connection.connect or connection.connection I don't which it is yet
   });
 
   app.get("/api/post/:id", function (req, res) {
