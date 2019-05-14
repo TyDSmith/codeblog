@@ -1,6 +1,5 @@
 var db = require("../models");
 var axios = require("axios");
-// import $ from 'jquery';
 
 module.exports = function (app) {
   console.log("apiroutes");
