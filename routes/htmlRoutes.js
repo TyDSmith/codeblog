@@ -1,39 +1,18 @@
 var db = require("../models");
 var axios = require("axios");
 var mysql = require('mysql');
-
-
-// var connection = mysql.createConnection({
-
-//   host: "v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-//   user: "d8sfxcrhux4qrfh8",
-//   password: "na0qh0mw3v80fvu7",
-//   port: 3306,
-//   database: "pq207a6dbgeya65s"
-
-// });
-
-// connection.connect(function(err) {
-//   if (err) throw err;
-//   connection.query("SELECT * FROM Blogs", function (err, result, fields) {
-//     if (err) throw err;
-//     console.log(result);
-//   });
-// });
+var connection = require('../server')
 
 
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-
   res.render("index");
-
   });
 
   app.get("/single-post", function(req, res) {
     res.render("single-post");
     });
-
 
   app.get("/post/:id", function(req, res) {
     // ajax call api/post/id{ render}
@@ -44,9 +23,10 @@ module.exports = function(app) {
       // with thr responsoe you will render the page
 
       //call the db and render the info
-      connection.query("SELECT * FROM Blogs where post_id=" + req.params.id, function (err, result, fields) {
+      connection.query("SELECT * FROM Blogs where id=" + req.params.id, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
+        res.render("single-post");
         //send to render
       });
       
