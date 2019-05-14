@@ -11,7 +11,7 @@ A programming focused blog with user-submitted content
 * axios
 
 MySQL database entry:
-* postID
+* post_id
 * title
 * content
 * header image
