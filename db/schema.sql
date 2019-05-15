@@ -10,5 +10,3 @@ Create Table Blogs (
     publish_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP; 
     header_image Varchar (255) 
     );
-INSERT INTO Blogs
-VALUES ('First Post', 'This is the <strong>First</strong> post.', 'Ty', Default, Default, 'https://4.img-dpreview.com/files/p/E~TS590x0~articles/3925134721/0266554465.jpeg');
