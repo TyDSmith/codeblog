@@ -25,11 +25,11 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
     if (err) throw err;
-    console.log("connection done");
-    // connection.query("SELECT * FROM Blogs", function (err, result, fields) {
-    //   if (err) throw err;
-    //   // console.log(result);
-    // });
+    console.log("Database connection made");
+    connection.query("SELECT * FROM Blogs", function (err, result, fields) {
+      if (err) throw err;
+    
+    });
   });
 
 module.exports = connection;
