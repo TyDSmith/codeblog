@@ -36,5 +36,29 @@
   };
 
   popTags();
+
+function handelPost(){
+  // event.preventDefault();
+  var title = $('#title-input').val();
+  var headerURL = $('#header-image-input').val();
+  var content = $('#post-content-input').val();
+  var post = {
+    title: title,
+    headerURL: headerURL,
+    content: content,
+    author: "nick"
+  };
+  
+  console.log(post);
+   $.post("/api/submit", post, function(){
+     console.log("post was sent");
+   });
+
+};
+
+  $('#submitBtn').on("click", function(event){
+  event.preventDefault();
+  handelPost();
+});
   
 </script>

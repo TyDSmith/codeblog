@@ -114,28 +114,25 @@ $.ajax({
 
 getPost();
 
-function handelPost(){
-  // event.preventDefault();
-  var title = $('#title-input').val();
-  var headerURL = $('#header-image-input').val();
-  var content = $('#post-content-input').val();
-  var post = {
-    title: title,
-    headerURL: headerURL,
-    content: content
-  };
+// function handelPost(){
+//   // event.preventDefault();
+//   var title = $('#title-input').val();
+//   var headerURL = $('#header-image-input').val();
+//   var content = $('#post-content-input').val();
+//   var post = {
+//     title: title,
+//     headerURL: headerURL,
+//     content: content
+//   };
   
-  console.log(post);
-  $.post("/api/submit", post, function(){
-    console.log("post was sent");
-  });
+//   console.log(post);
+//   // $.post("/api/submit", post, function(){
+//   //   console.log("post was sent");
+//   // });
 
-};
+// };
 
-$('#submitBtn').on("click", function(event){
-  event.preventDefault();
-  handelPost();
-});
+
 // api/blog is returning the post. need a route to return 3 most recent to display on front page.
 // setup for loop to go through data objects.
 // inside of loop, using handlebars/jquery to append dynmaclly
