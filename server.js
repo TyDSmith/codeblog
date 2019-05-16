@@ -1,11 +1,39 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-
-//var db = require("./models");
+require('dotenv').config();
+var mysql = require('mysql');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
+
+var connection = mysql.createConnection({
+    host: "v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "d8sfxcrhux4qrfh8",
+    password: "na0qh0mw3v80fvu7",
+    port: 3306,
+    database: "pq207a6dbgeya65s"
+    // host: "localhost",
+    // user: "webuser",
+    // password: "UCR",
+    // post: 3306,
+    // database: "bloggers_db"
+
+
+});
+
+
+connection.connect(function(err) {
+    if (err) throw err;
+    console.log("Database connection made");
+    connection.query("SELECT * FROM Blogs", function (err, result, fields) {
+      if (err) throw err;
+    
+    });
+  });
+
+module.exports = connection;
+
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
