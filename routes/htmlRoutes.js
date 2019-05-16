@@ -34,7 +34,7 @@ app.get("*", function (req, res) {
 
 app.get("/post/:postID", function (req, res) {
   console.log("choice id is " + req.params.id);
-})};
+});
 
 var testVar = 55;
 
@@ -77,10 +77,10 @@ module.exports = function (app) {
     console.log("choice id is " + req.params.id);
   });
 };
-if (err) throw err;
+if (err) {
+  throw err;
+}
 console.log(result);
-  //send to render
-});
+//send to render
 
-});  //res.render("single-post");
-
+//res.render("single-post");

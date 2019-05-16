@@ -1,14 +1,18 @@
-var db = require("../models");
 var axios = require("axios");
 
 var connection = require("../server");
 module.exports = function (app) {
   console.log("apiroutes");
   // Get all examples
-  app.get("/api/examples", function (req, res) {
+  app.get("/api/blogs", function (req, res) {
     axios.get(url);
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.json(dbExamples);
+    var sql = "SELECT * FROM Blogs;";
+    connection.query(sql, function (err, sqlResult) {
+      if (err) {
+        console.log("Oops somethings wrong");
+        throw err;
+      }
+      res.json(sqlResult);
     });
   });
 
