@@ -15,18 +15,19 @@ module.exports = function(app) {
 
   app.get("/content/:id", function(req, res) {
     var sql = "SELECT * FROM Blogs where post_id=" + req.params.id + ";";
-    connection.query(sql, function(err, sqlResult){
-      if (err) {
-          console.log("Oops somethings wrong");
-          throw err;
-      }
-      console.log(sqlResult);
-      console.log('running');
-      var hbsObject = sqlResult;
-      res.render("single-post");
-      // res.json(sqlResult);
-    });
-    // res.render("single-post");
+      connection.query(sql, function(err, sqlResult){
+        if (err) {
+            console.log("Oops somethings wrong");
+            throw err;
+        }
+        console.log(sqlResult);
+        console.log('running');
+        var hbsObject = sqlResult;
+        console.log(hbsObject[0].content);
+        res.render("single-post", hbsObject[0]);
+
+      });
+
     });
 
 
