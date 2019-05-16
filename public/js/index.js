@@ -100,15 +100,6 @@ var $exampleList = $("#example-list");
 // $submitBtn.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-<<<<<<< HEAD
-// //Populate HTML Divs from templates  (footer, header, sidebar, etc)
-// function onload(){
-// $("#header").load("../htmlTemplates/header.html");
-// $("#sidebar").load("../htmlTemplates/sidebar.html");  
-// $("#footer").load("../htmlTemplates/footer.html"); 
-// };
-=======
->>>>>>> master
 
 function getPost(){
 $.ajax({
