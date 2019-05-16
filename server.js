@@ -8,18 +8,11 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 var connection = mysql.createConnection({
-    // host: "v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    // user: "d8sfxcrhux4qrfh8",
-    // password: "na0qh0mw3v80fvu7",
-    // port: 3306,
-    // database: "pq207a6dbgeya65s"
-    host: "localhost",
-    user: "webuser",
-    password: "UCR",
-    post: 3306,
-    database: "bloggers_db"
-
-
+    host: "v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "d8sfxcrhux4qrfh8",
+    password: "na0qh0mw3v80fvu7",
+    port: 3306,
+    database: "pq207a6dbgeya65s"
 });
 
 
