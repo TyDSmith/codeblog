@@ -99,12 +99,6 @@ var handleDeleteBtnClick = function() {
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-//Populate HTML Divs from templates  (footer, header, sidebar, etc)
-function onload(){
-$("#header").load("../htmlTemplates/header.html");
-$("#sidebar").load("../htmlTemplates/sidebar.html");  
-$("#footer").load("../htmlTemplates/footer.html"); 
-};
 
 function getPost(){
 $.ajax({
@@ -113,7 +107,8 @@ $.ajax({
   success: function(testPost){
     console.log(testPost);
     console.log(testPost[0].content);
-    $("#header").append('<p>hello world, this is nak</p>');
+    // for(i=0; i<testPost)
+    // $("#header").append('<p>hello world, this is nak</p>' + result);
   },
 });
 // var data = [
@@ -129,6 +124,7 @@ $.ajax({
 //   // append data here
 // };
 };
+
 getPost();
 
 // api/blog is returning the post. need a route to return 3 most recent to display on front page.

@@ -20,10 +20,10 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
     if (err) throw err;
-    console.log("connection done");
+    console.log("Database connection made");
     connection.query("SELECT * FROM Blogs", function (err, result, fields) {
       if (err) throw err;
-      // console.log(result);
+    
     });
   });
 
