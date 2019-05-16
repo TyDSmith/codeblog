@@ -99,20 +99,6 @@ var handleDeleteBtnClick = function() {
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-//Populate HTML Divs from templates  (footer, header, sidebar, etc)
-function onload(){
-  $("#header").load("../htmlTemplates/header.html");
-  $("#sidebar").load("../htmlTemplates/sidebar.html");  
-  $("#footer").load("../htmlTemplates/footer.html"); 
-};
-
-function postonload(){
-  console.log("single post on load");
-    $('.single-post-content').html("testttttt");
-    $('#single-post-content').append("test2");
-    $("#footer").load("../htmlTemplates/footer.html"); 
-
-};
 
 function getPost(){
 $.ajax({
@@ -138,6 +124,7 @@ $.ajax({
 //   // append data here
 // };
 };
+
 getPost();
 
 // api/blog is returning the post. need a route to return 3 most recent to display on front page.

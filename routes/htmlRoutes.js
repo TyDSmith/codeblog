@@ -12,18 +12,8 @@ var $ = jQuery = require('jquery')(window);
 
 
 module.exports = function(app) {
-  // Load index page
-  app.get("/", function(req, res) {
-  res.render("index");
-  });
 
-
-  app.get("/single-post", function(req, res) {
-    res.render('single-post');
-  });
-
-
-  app.get("/post/:id", function(req, res) {
+  app.get("/content/:id", function(req, res) {
     var sql = "SELECT * FROM Blogs where post_id=" + req.params.id + ";";
     connection.query(sql, function(err, sqlResult){
       if (err) {
@@ -33,36 +23,36 @@ module.exports = function(app) {
       console.log(sqlResult);
       console.log('running');
       var hbsObject = sqlResult;
-      res.render('single-post', hbsObject.content);
+      res.render("single-post");
       // res.json(sqlResult);
     });
     // res.render("single-post");
     });
 
-  app.get("/post/:id", function(req, res) {
-    // ajax call api/post/id{ render}
-    console.log("req.params.id html", req.params.id)
 
-      connection.query("SELECT * FROM Blogs where post_id=" + req.params.id, function (err, result, fields) {
-        if (err) throw err;
-        console.log(result);
-        res.render("single-post");
+  // Load index page
+  app.get("/", function(req, res) {
+    res.render("index");
+  });
 
-        // insertPostInfo();
-  
-      });
-      
-    });
-
+  app.get("/single-post", function(req, res) {
+    res.render("single-post");
+  });
 
   app.get("/submit", function(req, res) {
     res.render("submit-post");
     });
+    
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
+
+
+
+
 };
 
 
