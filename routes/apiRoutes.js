@@ -1,4 +1,3 @@
-// var db = require("../models");
 var axios = require("axios");
 // import $ from 'jquery';
 var connection = require('../server')
@@ -30,22 +29,15 @@ module.exports = function(app) {
   // route to search by id
   app.get("/api/post/:id", function(req,res){
     console.log("api side")
-<<<<<<< HEAD
-    console.log("id: ", req.params.id)
-    // return("hi")
-     var sql = `SELECT * FROM Blogs WHERE post_id = ${req.params.id}`
-     connection.query(sql, function(err, sqlResult){
-=======
     console.log("id: ", req.params.id);
-    connection.query("SELECT * FROM Blogs where id =" + req.params.id, function (err, result, fields) {
+    connection.query("SELECT * FROM Blogs where post_id =" + req.params.id, function (err, result, fields) {
       if (err) throw err;
       res.json(result);
-      console.log(result);
+      // console.log(result);
     //res.JSON(connection.connection);
     
   })
     return("hi")
->>>>>>> 2a165ea9fb42311222645b6f4e8e10fdf54d9b99
 
       if (err) {
           console.log("Oops somethings wrong");
@@ -55,7 +47,7 @@ module.exports = function(app) {
     });
     // db find the row with the post_id = id
 
-  });
+  
 
   // app.get("/api/post/author/:author", function(req,res){
   //   console.log("api side")
@@ -75,11 +67,20 @@ module.exports = function(app) {
   // });
 
   // Create a new example
-  // app.post("/api/examples", function(req, res) {
-  //   db.Example.create(req.body).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
+
+  // extract info, take the three submit values from req.body
+  // use schema.sql to insert values
+  app.post("/api/post", function(req, res) {
+    console.log("post was recived");
+    console.log(req.body);
+    res.json(req.body);
+    // db.Example.create(req.body).then(function(dbExample) {
+    //   res.json(dbExample);
+    // });
+
+
+  });
+  
 
   // Delete an example by id
   // app.delete("/api/examples/:id", function(req, res) {
@@ -87,4 +88,5 @@ module.exports = function(app) {
   //     res.json(dbExample);
   //   });
   // });
+
 };

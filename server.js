@@ -4,8 +4,6 @@ var exphbs = require("express-handlebars");
 require('dotenv').config();
 var mysql = require('mysql');
 
-//var db = require("./models");
-
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -23,7 +21,7 @@ connection.connect(function(err) {
     console.log("connection done");
     connection.query("SELECT * FROM Blogs", function (err, result, fields) {
       if (err) throw err;
-      // console.log(result);
+      console.log(result);
     });
   });
 

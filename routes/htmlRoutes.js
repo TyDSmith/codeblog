@@ -26,9 +26,10 @@ module.exports = function(app) {
           throw err;
       }
       // console.log('single-post');
-      console.log(sqlResult[0]);
-      var hbsObject = sqlResult[0];
+      console.log(sqlResult);
+      var hbsObject = sqlResult;
       res.render('single-post', hbsObject);
+      console.log("new logs: ", hbsObject);
       // res.json(sqlResult);
     });
     // res.render("single-post");
