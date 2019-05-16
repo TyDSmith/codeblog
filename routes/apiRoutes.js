@@ -15,7 +15,7 @@ module.exports = function(app) {
     });
   });
  
-  app.post("/api/post", function(req, res) {
+  app.post("/api/submit", function(req, res) {
     console.log("post was recived");
     console.log(req.body);
     connection.query("INSERT INTO Blogs (title, content, header_image, author, publish_date) VALUES (?,?,?,?,?)", [req.body.title ,req.body.content, req.body.header_image, req.body.author, new Date()], function (err, result, fields) {

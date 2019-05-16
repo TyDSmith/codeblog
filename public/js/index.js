@@ -126,7 +126,7 @@ function handelPost(){
   };
   
   console.log(post);
-  $.post("/api/post", post, function(){
+  $.post("/api/submit", post, function(){
     console.log("post was sent");
   });
 
