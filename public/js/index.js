@@ -111,20 +111,7 @@ function getPost(){
 $.ajax({
   url: "api/blog",
   type: "GET",
-  success: function(testPost){
-    console.log(testPost);
-    console.log(testPost[0].content);
-    $("#header").append('<p>hello world, this is nak</p>');
-  },
 });
-// var data = [
-//   author,
-//   content,
-//   header_img,
-//   post_id,
-//   publish_date,
-//   title
-// ]
 // for (i = 0; i < data.length; i++) {
 //   console.log("Is this your data? ", data);
 //   // append data here
@@ -142,10 +129,12 @@ function handelPost(){
     headerURL,
     content
   };
+  
   console.log(post);
   $.post("/api/post", post, function(){
-    console.log("post was sent ♥");
-  })
+    console.log("post was sent");
+  });
+
 };
 
 $('#submitBtn').on("click", function(event){

@@ -43,9 +43,9 @@ module.exports = function(app) {
       // with thr responsoe you will render the page
 
       //call the db and render the info
-      connection.query("SELECT * FROM Blogs where post_id=" + req.params.id, function (err, result, fields) {
+      connection.query("SELECT * FROM blogs where post_id=" + req.params.id, function (err, result, fields) {
         if (err) throw err;
-        console.log(result);
+        // console.log(result);
         res.render("single-post");
 
         insertPostInfo();

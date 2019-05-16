@@ -36,9 +36,7 @@ module.exports = function(app) {
       // console.log(result);
     //res.JSON(connection.connection);
     
-  })
-    return("hi")
-
+  });
       if (err) {
           console.log("Oops somethings wrong");
           throw err;
@@ -73,11 +71,12 @@ module.exports = function(app) {
   app.post("/api/post", function(req, res) {
     console.log("post was recived");
     console.log(req.body);
-    res.json(req.body);
-    // db.Example.create(req.body).then(function(dbExample) {
-    //   res.json(dbExample);
-    // });
-
+    connection.query("INSERT INTO Blogs (title, content, header_image, author, publish_date) VALUES (?,?,?,?,?)", [req.body.title ,req.body.content, req.body.header_image, req.body.author, new Date()], function (err, result, fields) {
+      if (err) throw err;
+      res.json(result);
+      console.log(result);
+    
+  });
 
   });
   

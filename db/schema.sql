@@ -8,5 +8,5 @@ Create Table Blogs (
     content Varchar (200) NOT NULL,
     header_image "" Not NULL ,
     author Varchar (200) NOT NULL, 
-    submit_date DATE
+    publish_date DATE
 );
