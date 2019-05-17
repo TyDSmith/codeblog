@@ -5,7 +5,6 @@ var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 // var axios = require("axios");
 
-
 // The API object contains methods for each kind of request we'll make
 // var API = {
 //   saveExample: function(example) {
@@ -100,39 +99,37 @@ var $exampleList = $("#example-list");
 // $submitBtn.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-
-function getPost(){
-$.ajax({
-  url: "api/blog",
-  type: "GET",
-});
-// for (i = 0; i < data.length; i++) {
-//   console.log("Is this your data? ", data);
-//   // append data here
-// };
-};
+function getPost() {
+  $.ajax({
+    url: "api/blog",
+    type: "GET"
+  });
+  // for (i = 0; i < data.length; i++) {
+  //   console.log("Is this your data? ", data);
+  //   // append data here
+  // };
+}
 
 getPost();
 
-function handelPost(){
+function handelPost() {
   // event.preventDefault();
-  var title = $('#title-input').val();
-  var headerURL = $('#header-image-input').val();
-  var content = $('#post-content-input').val();
+  var title = $("#title-input").val();
+  var headerURL = $("#header-image-input").val();
+  var content = $("#post-content-input").val();
   var post = {
-    title,
-    headerURL,
-    content
+    title: title,
+    headerURL: headerURL,
+    content: content
   };
-  
+
   console.log(post);
-  $.post("/api/submit", post, function(){
+  $.post("/api/submit", post, function () {
     console.log("post was sent");
   });
+}
 
-};
-
-$('#submitBtn').on("click", function(event){
+$("#submitBtn").on("click", function (event) {
   event.preventDefault();
   handelPost();
 });

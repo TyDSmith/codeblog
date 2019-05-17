@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-{
-  "development": {
-    "username": "ty",
-    "password": "password",
-    "database": "exampledb",
-    "host": "localhost",
-    "dialect": "mysql"
-  },
-  "test": {
-<<<<<<< HEAD
-    "username": "ty",
-    "password": "password",
-    "database": "testdb",
-=======
-    "username": "root",
-    "password": "",
-    "database": "bloggers_db",
->>>>>>> 8ecee782b047e5535db61179811e97169dab3434
-    "host": "localhost",
-    "dialect": "mysql",
-    "logging": false
-  },
-  "production": {
-    "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
-  }
-}
-=======
 {
   "development": {
     "username": "ty",
@@ -48,4 +19,3 @@
     "dialect": "mysql"
   }
 }
->>>>>>> 8983ab0955ca7a98fb267b7f7ba2821ad0439016
