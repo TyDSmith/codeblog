@@ -1,11 +1,9 @@
 var axios = require("axios");
-
+// import $ from 'jquery';
 var connection = require("../server");
+
 module.exports = function (app) {
-  console.log("apiroutes");
-  // Get all examples
-  app.get("/api/blogs", function (req, res) {
-    axios.get(url);
+  app.get("/api/blog", function (req, res) {
     var sql = "SELECT * FROM Blogs;";
     connection.query(sql, function (err, sqlResult) {
       if (err) {
@@ -16,46 +14,23 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/", function (req, res) {
-    res.json();
-    console.log("I am here");
-    res.json(connection.connect);
-    //the response.json is either connection.connect or connection.connection I don't which it is yet
-  });
-
-  app.get("/api/post/:id", function (req, res) {
-    console.log("api side");
-    console.log("id: ", req.params.id);
-    connection.query("SELECT * FROM Blogs where id =" + req.params.id, function (
-      err,
-      result
-      //fields
-    ) {
-      if (err) {
-        throw err;
+  app.post("/api/submit", function (req, res) {
+    console.log("post was recived");
+    console.log(req.body);
+    connection.query(
+      "INSERT INTO Blogs (title, content, header_image, author, publish_date) VALUES (?,?,?,?,?)",
+      [
+        req.body.title,
+        req.body.content,
+        req.body.header_image,
+        req.body.author,
+        new Date()
+      ],
+      function (err, result, fields) {
+        if (err) throw err;
+        res.json(result);
+        console.log(result);
       }
-      res.json(result);
-      console.log(result);
-    });
-
-    return "Hello";
-
-    // db find the row with the post_id = id
-  });
-
-  // Create a new example
-  app.post("/api/examples", function (req, res) {
-    db.Example.create(req.body).then(function (dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function (
-      dbExample
-    ) {
-      res.json(dbExample);
-    });
+    );
   });
 };

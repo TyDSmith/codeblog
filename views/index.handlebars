@@ -1,35 +1,52 @@
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/styles/styles.css">
-    <title>codeblog</title>
-</head>
 <div class="header" id="header">
 </div>
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
-      <h2>PLACEHOLDER TITLE HEADING</h2>
-      <h5>PALCGHOLDER Title description, Sep 2, 2017</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>PLACEHOLDER some text..</p>
+      <ul class="article_list">
+        <li>
+          <img src="https://marketingweek.imgix.net/content/uploads/2017/05/12103909/Coding-body-image-.jpg" alt="header image" class="fakeimg single-post-image"></img>
+          <div>
+            <a href="/single-post" class="article_list_title">PLACEHOLDER TITLE HEADING</a>
+            <div class="article_list_date">May 3, 2019</div>
+          </div>
+        </li>
+        <li>
+          <img src="https://marketingweek.imgix.net/content/uploads/2017/05/12103909/Coding-body-image-.jpg" alt="header image" class="fakeimg single-post-image"></img>
+          <div>
+            <a href="/single-post" class="article_list_title">PLACEHOLDER TITLE HEADING</a>
+            <div class="article_list_date">May 1, 2019</div>
+          </div>
+        </li>
+        <li>
+          <img src="https://marketingweek.imgix.net/content/uploads/2017/05/12103909/Coding-body-image-.jpg" alt="header image" class="fakeimg single-post-image"></img>
+          <div>
+            <a href="/single-post" class="article_list_title">PLACEHOLDER TITLE HEADING</a>
+            <div class="article_list_date">Apr 28, 2019</div>
+          </div>
+        </li>
+      </ul>
     </div>
-    {{#each blog-post}}
-    <div class="card">
-      <h2>{{title}} TITLE HEADING</h2>
-      <h5>{{post-date}}Title description, Sep 2, 2017</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>{{post-content}}Some text..</p>
-    </div>
-    {{/each}}
+
+<div class="card">
+            <ul class="article_list">
+            {{!-- {{#each}} --}}
+              <li>
+                <img src="{{this.header_image}}" alt="header image" class="fakeimg single-post-image"></img>
+                <div>
+                  <a href="#" class="article_list_title">{{this.title}}</a>
+                  
+                </div>
+              </li>
+            {{!-- {{/each}} --}}
+          </ul>
+    </div> 
+
   </div>
   <div class="rightcolumn" id="sidebar"></div>
 </div>
 
 <div class="footer" id="footer"></div>
 
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
-
+<script>onload();</script>

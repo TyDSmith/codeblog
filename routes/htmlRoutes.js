@@ -1,52 +1,38 @@
-// Load index page
-app.get("/", function (req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.render("index", {
-  //       msg: "Welcome!",
-  //       examples: dbExamples
-  //     });
-  //   });
-  res.render("index");
-});
+// var axios = require("axios");
+var mysql = require('mysql');
+var connection = require('../server');
 
-app.get("/single-post", function (req, res) {
-  res.render("single-post");
-});
+var jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const { window } = new JSDOM();
+const { document } = (new JSDOM('')).window;
+global.document = document;
 
-app.get("/submit", function (req, res) {
-  res.render("submit-post");
-});
-// Load example page and pass in an example by id
-// app.get("/example/:id", function(req, res) {
-//   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-//     res.render("example", {
-//       example: dbExample
-//     });
-//   });
-// });
+var $ = jQuery = require('jquery')(window);
 
-// Render 404 page for any unmatched routes
-app.get("*", function (req, res) {
-  res.render("404");
-});
-
-//create unique URL for e//create unique URL for ecreate unique URL for each blog post (by ID)
-
-app.get("/post/:postID", function (req, res) {
-  console.log("choice id is " + req.params.id);
-});
-
-var testVar = 55;
 
 module.exports = function (app) {
+
+  app.get("/content/:id", function (req, res) {
+    var sql = "SELECT * FROM Blogs where post_id=" + req.params.id + ";";
+    connection.query(sql, function (err, sqlResult) {
+      if (err) {
+        console.log("Oops somethings wrong");
+        throw err;
+      }
+      console.log(sqlResult);
+      console.log('running');
+      var hbsObject = sqlResult;
+      console.log(hbsObject[0].content);
+      res.render("single-post", hbsObject[0]);
+
+    });
+
+  });
+
+
   // Load index page
   app.get("/", function (req, res) {
-    //   db.Example.findAll({}).then(function(dbExamples) {
-    //     res.render("index", {
-    //       msg: "Welcome!",
-    //       examples: dbExamples
-    //     });
-    //   });
     res.render("index");
   });
 
@@ -57,30 +43,22 @@ module.exports = function (app) {
   app.get("/submit", function (req, res) {
     res.render("submit-post");
   });
-  // Load example page and pass in an example by id
-  // app.get("/example/:id", function(req, res) {
-  //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.render("example", {
-  //       example: dbExample
-  //     });
-  //   });
-  // });
+
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
   });
 
-  //create unique URL for each blog post (by ID)
 
-  app.get("/post/:postID", function (req, res) {
-    console.log("choice id is " + req.params.id);
-  });
+
+
 };
-if (err) {
-  throw err;
-}
-console.log(result);
-//send to render
 
-//res.render("single-post");
+
+// function insertPostInfo(){
+//   console.log("woop");
+//   $('.single-post-content').html("testttttt");
+//   $('.single-post-content').append("test2");
+// };
