@@ -33,7 +33,19 @@ module.exports = function (app) {
 
   // Load index page
   app.get("/", function (req, res) {
-    res.render("index");
+    var sql = "SELECT * FROM Blogs;";
+    connection.query(sql, function (err, sqlResult) {
+      if (err) {
+        console.log("Oops somethings wrong");
+        throw err;
+      }
+
+      console.log(sqlResult);
+
+      res.render("index", {
+        blogs: sqlResult
+      });
+    });
   });
 
   app.get("/single-post", function (req, res) {
