@@ -20,10 +20,10 @@ module.exports = function (app) {
         console.log("Oops somethings wrong");
         throw err;
       }
-      console.log(sqlResult);
+      // console.log(sqlResult);
       console.log('running');
       var hbsObject = sqlResult;
-      console.log(hbsObject[0].content);
+      // console.log(hbsObject[0].content);
       res.render("single-post", hbsObject[0]);
 
     });
@@ -39,9 +39,6 @@ module.exports = function (app) {
         console.log("Oops somethings wrong");
         throw err;
       }
-
-      console.log(sqlResult);
-
       res.render("index", {
         blogs: sqlResult
       });

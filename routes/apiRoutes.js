@@ -16,7 +16,7 @@ module.exports = function (app) {
 
   app.post("/api/submit", function (req, res) {
     console.log("post was recived");
-    console.log(req.body);
+    // console.log(req.body);
     connection.query(
       "INSERT INTO Blogs (title, content, header_image, author, publish_date) VALUES (?,?,?,?,?)",
       [
@@ -29,7 +29,7 @@ module.exports = function (app) {
       function (err, result, fields) {
         if (err) throw err;
         res.json(result);
-        console.log(result);
+        // console.log(result);
       }
     );
   });

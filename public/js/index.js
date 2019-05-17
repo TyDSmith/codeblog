@@ -127,7 +127,7 @@ $(document).ready(function () {
       content: content
     };
 
-    console.log(post);
+    // console.log(post);
 
     if ((content !== null && content !== "" && content !== undefined)) {
       $.post("/api/submit", post, function () {
@@ -138,21 +138,66 @@ $(document).ready(function () {
     }
   }
 
+  //Return to homepage on post submission
+  function renderHomepage(){
+    window.location.replace("/");
+    return false;
+  }
+
   $("#submitBtn").on("click", function (event) {
     event.preventDefault();
     handelPost();
+    renderHomepage();
   });
   // api/blog is returning the post. need a route to return 3 most recent to display on front page.
   // setup for loop to go through data objects.
   // inside of loop, using handlebars/jquery to append dynmaclly
   // fiddle with it.
+  
+  //Create widget that displays most recent posts
 
-  console.log("beep");
+  function sortPostsByRecent(){
+    var postsArray = [];
+    $.ajax({
+      url: "api/blog",
+      type: "GET",
+      success: function(data){
+        var allPosts = data;
+        console.log('all posts loaded');
+        
+      }
+    }).then( 
+
+    //   function sorting(allPosts, post_id) {
+    //     function sortByKey(a, b) {
+    //         var x = a[post_id];
+    //         var y = b[post_id];
+    //         return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+    //     }
+    //     allPosts.sort(sortByKey);
+    //     console.log(allPosts);
+
+    // }
+      
+      function sortRecentPosts(allPosts){
+        for (i=0; i < allPosts.length; i++){
+          postsArray.push(allPosts[i]);
+        }
+        postsArray.sort( function ( a, b ) { return b.post_id - a.post_id; } );
+        var clipped3RecentPosts = postsArray.slice(0,3);
+        console.log(clipped3RecentPosts);
+
+      })};
+
+  sortPostsByRecent();
+
+  //Populate header, footer, and sidebar from html template
   function popTags() {
     $("#header").load("../htmlTemplates/header.html");
     $("#sidebar").load("../htmlTemplates/sidebar.html");
     $("#footer").load("../htmlTemplates/footer.html");
   }
-
   popTags();
+
 });
+
