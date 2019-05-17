@@ -164,36 +164,30 @@ $(document).ready(function () {
       success: function(data){
         var allPosts = data;
         console.log('all posts loaded');
-        console.log(allPosts);
-      }
-    }).then( function sortRecentPosts(allPosts){
-      for (i=0; i < allPosts.length; i++){
-        console.log(allPosts[i]);
-        postsArray.push(allPosts[i].post_id);
-        console.log("Post ID: " + allPosts[i].post_id + " logged to array");
-      }
-      postsArray.sort(function(a,b){return b-a});
-      console.log(postsArray);
-
-      var recent3PostsArray = [];
-      var clipped3RecentPosts = postsArray.slice(0,3);
-   
-      for (i=0; i<clipped3RecentPosts.length;i++){
-        recent3PostsArray.push(clipped3RecentPosts[i])
-      };
-
-      console.log(recent3PostsArray);
- 
-    
-      // connection.query("SELECT * FROM Blogs WHERE ID =" + , function (err, result, fields) {
-      //   if (err) throw err;
         
-      // });
- 
-    })
+      }
+    }).then( 
 
+    //   function sorting(allPosts, post_id) {
+    //     function sortByKey(a, b) {
+    //         var x = a[post_id];
+    //         var y = b[post_id];
+    //         return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+    //     }
+    //     allPosts.sort(sortByKey);
+    //     console.log(allPosts);
 
-  };
+    // }
+      
+      function sortRecentPosts(allPosts){
+        for (i=0; i < allPosts.length; i++){
+          postsArray.push(allPosts[i]);
+        }
+        postsArray.sort( function ( a, b ) { return b.post_id - a.post_id; } );
+        var clipped3RecentPosts = postsArray.slice(0,3);
+        console.log(clipped3RecentPosts);
+
+      })};
 
   sortPostsByRecent();
 
