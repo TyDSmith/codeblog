@@ -165,12 +165,12 @@ ul.article_list li{
 }
 
 ul.article_list li img {
-  width: 90px;
+  width: 112px;
   height: 90px;
   float: left;
   margin-right: 10px;
   border-radius: 2px;
-  margin-bottom: 0;
+  margin-bottom: 15px;
 }
 
 .article_list_title{

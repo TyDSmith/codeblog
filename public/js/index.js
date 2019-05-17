@@ -127,7 +127,7 @@ $(document).ready(function () {
       content: content
     };
 
-    console.log(post);
+    // console.log(post);
 
     if ((content !== null && content !== "" && content !== undefined)) {
       $.post("/api/submit", post, function () {
@@ -138,21 +138,72 @@ $(document).ready(function () {
     }
   }
 
+  //Return to homepage on post submission
+  function renderHomepage(){
+    window.location.replace("/");
+    return false;
+  }
+
   $("#submitBtn").on("click", function (event) {
     event.preventDefault();
     handelPost();
+    renderHomepage();
   });
   // api/blog is returning the post. need a route to return 3 most recent to display on front page.
   // setup for loop to go through data objects.
   // inside of loop, using handlebars/jquery to append dynmaclly
   // fiddle with it.
+  
+  //Create widget that displays most recent posts
 
-  console.log("beep");
+  function sortPostsByRecent(){
+    var postsArray = [];
+    $.ajax({
+      url: "api/blog",
+      type: "GET",
+      success: function(data){
+        var allPosts = data;
+        console.log('all posts loaded');
+        console.log(allPosts);
+      }
+    }).then( function sortRecentPosts(allPosts){
+      for (i=0; i < allPosts.length; i++){
+        console.log(allPosts[i]);
+        postsArray.push(allPosts[i].post_id);
+        console.log("Post ID: " + allPosts[i].post_id + " logged to array");
+      }
+      postsArray.sort(function(a,b){return b-a});
+      console.log(postsArray);
+
+      var recent3PostsArray = [];
+      var clipped3RecentPosts = postsArray.slice(0,3);
+   
+      for (i=0; i<clipped3RecentPosts.length;i++){
+        recent3PostsArray.push(clipped3RecentPosts[i])
+      };
+
+      console.log(recent3PostsArray);
+ 
+    
+      // connection.query("SELECT * FROM Blogs WHERE ID =" + , function (err, result, fields) {
+      //   if (err) throw err;
+        
+      // });
+ 
+    })
+
+
+  };
+
+  sortPostsByRecent();
+
+  //Populate header, footer, and sidebar from html template
   function popTags() {
     $("#header").load("../htmlTemplates/header.html");
     $("#sidebar").load("../htmlTemplates/sidebar.html");
     $("#footer").load("../htmlTemplates/footer.html");
   }
-
   popTags();
+
 });
+
