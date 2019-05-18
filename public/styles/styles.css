@@ -99,6 +99,7 @@ body {
   color: #4AD057;
   line-height: 1.25;
   margin-bottom: 20px;
+  text-transform: capitalize;
 }
 
 .sidebarPostTitles a{
