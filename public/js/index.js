@@ -5,110 +5,11 @@ $(document).ready(function () {
   // var $submitBtn = $("#submit");
   // var $exampleList = $("#example-list");
   // var axios = require("axios");
-
-  // The API object contains methods for each kind of request we'll make
-  // var API = {
-  //   saveExample: function(example) {
-  //     return $.ajax({
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       type: "POST",
-  //       url: "api/examples",
-  //       data: JSON.stringify(example)
-  //     });
-  //   },
-  //   getExamples: function() {
-  //     return $.ajax({
-  //       url: "api/examples",
-  //       type: "GET"
-  //     });
-  //   },
-  //   deleteExample: function(id) {
-  //     return $.ajax({
-  //       url: "api/examples/" + id,
-  //       type: "DELETE"
-  //     });
-  //   }
-  // };
-
-  // // refreshExamples gets new examples from the db and repopulates the list
-  // var refreshExamples = function() {
-  //   API.getExamples().then(function(data) {
-  //     var $examples = data.map(function(example) {
-  //       var $a = $("<a>")
-  //         .text(example.text)
-  //         .attr("href", "/example/" + example.id);
-
-  //       var $li = $("<li>")
-  //         .attr({
-  //           class: "list-group-item",
-  //           "data-id": example.id
-  //         })
-  //         .append($a);
-
-  //       var $button = $("<button>")
-  //         .addClass("btn btn-danger float-right delete")
-  //         .text("ｘ");
-
-  //       $li.append($button);
-
-  //       return $li;
-  //     });
-
-  //     $exampleList.empty();
-  //     $exampleList.append($examples);
-  //   });
-  // };
-
-  // // handleFormSubmit is called whenever we submit a new example
-  // // Save the new example to the db and refresh the list
-  // var handleFormSubmit = function(event) {
-  //   event.preventDefault();
-
-  //   var example = {
-  //     text: $exampleText.val().trim(),
-  //     description: $exampleDescription.val().trim()
-  //   };
-
-  //   if (!(example.text && example.description)) {
-  //     alert("You must enter an example text and description!");
-  //     return;
-  //   }
-
-  //   API.saveExample(example).then(function() {
-  //     refreshExamples();
-  //   });
-
-  //   $exampleText.val("");
-  //   $exampleDescription.val("");
-  // };
-
-  // // handleDeleteBtnClick is called when an example's delete button is clicked
-  // // Remove the example from the db and refresh the list
-  // var handleDeleteBtnClick = function() {
-  //   var idToDelete = $(this)
-  //     .parent()
-  //     .attr("data-id");
-
-  //   API.deleteExample(idToDelete).then(function() {
-  //     refreshExamples();
-  //   });
-  // };
-
-  // // Add event listeners to the submit and delete buttons
-  // $submitBtn.on("click", handleFormSubmit);
-  // $exampleList.on("click", ".delete", handleDeleteBtnClick);
-
   function getPost() {
     $.ajax({
       url: "api/blog",
       type: "GET"
     });
-    // for (i = 0; i < data.length; i++) {
-    //   console.log("Is this your data? ", data);
-    //   // append data here
-    // };
   }
 
   getPost();
@@ -118,7 +19,6 @@ $(document).ready(function () {
     var title = $("#title-input").val();
     var headerURL = $("#header-image-input").val();
     var author = $("#author-input").val();
-    // var content = $("#post-content-input").val();
     var content = document.getElementById("post-content-input_ifr").contentWindow.document.body.innerHTML;
     var post = {
       title: title,
@@ -126,8 +26,6 @@ $(document).ready(function () {
       author: author,
       content: content
     };
-
-    // console.log(post);
 
     if ((content !== null && content !== "" && content !== undefined)) {
       $.post("/api/submit", post, function () {
@@ -138,7 +36,7 @@ $(document).ready(function () {
     }
   }
 
-  //Return to homepage on post submission
+//Return to homepage on post submission
   function renderHomepage(){
     window.location.replace("/");
     return false;
@@ -149,27 +47,21 @@ $(document).ready(function () {
     handelPost();
     renderHomepage();
   });
-  // api/blog is returning the post. need a route to return 3 most recent to display on front page.
-  // setup for loop to go through data objects.
-  // inside of loop, using handlebars/jquery to append dynmaclly
-  // fiddle with it.
-  
 
-
-  //Create widget that displays most recent posts
+//Create widget that displays most recent posts
   function showSidebarPosts(clipped3RecentPosts){
-    console.log('show sidebar');
     for (i=0;i<clipped3RecentPosts.length;i++){
       var openDiv = "<div class='sidebarPostTitles'>";
       var closeDiv = "</div>";
-      var postTitle = "<a href=/content/" + clipped3RecentPosts[i].post_id + ">" + clipped3RecentPosts[i].title + "</a></div>";
+      var postTitle = "<a href=/content/" + clipped3RecentPosts[i].post_id 
+        + ">" + clipped3RecentPosts[i].title + "</a></div>";
       $('#sidebar-content').append(
         openDiv + postTitle + closeDiv
       );
     }
   };
 
-  //Sort posts and limit to 3
+//Sort posts and limit to 3
   function sortPostsByRecent(){
     var postsArray = [];
     $.ajax({
@@ -177,22 +69,21 @@ $(document).ready(function () {
       type: "GET",
       success: function(data){
         var allPosts = data;
-        console.log('all posts loaded');
       }
     }).then( 
+
       function sortRecentPosts(allPosts){
         for (i=0; i < allPosts.length; i++){
           postsArray.push(allPosts[i]);
         }
         postsArray.sort( function (a,b){return b.post_id - a.post_id;});
         var clipped3RecentPosts = postsArray.slice(0,3);
-        console.log(clipped3RecentPosts);
         showSidebarPosts(clipped3RecentPosts);
       })};
 
   sortPostsByRecent();
-
-  //Populate header, footer, and sidebar from html template
+ 
+//Populate header, footer, and sidebar from html template
   function popTags() {
     $("#header").load("../htmlTemplates/header.html");
     $("#sidebar").load("../htmlTemplates/sidebar.html");
