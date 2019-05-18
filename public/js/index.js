@@ -1,10 +1,4 @@
 $(document).ready(function () {
-  // Get references to page elements
-  // var $exampleText = $("#example-text");
-  // var $exampleDescription = $("#example-description");
-  // var $submitBtn = $("#submit");
-  // var $exampleList = $("#example-list");
-  // var axios = require("axios");
   function getPost() {
     $.ajax({
       url: "api/blog",
@@ -50,6 +44,7 @@ $(document).ready(function () {
 
 //Create widget that displays most recent posts
   function showSidebarPosts(clipped3RecentPosts){
+    console.log('showing sidebar titles from indexjs');
     for (i=0;i<clipped3RecentPosts.length;i++){
       var openDiv = "<div class='sidebarPostTitles'>";
       var closeDiv = "</div>";
@@ -75,7 +70,7 @@ $(document).ready(function () {
       function sortRecentPosts(allPosts){
         for (i=0; i < allPosts.length; i++){
           postsArray.push(allPosts[i]);
-        }
+        };
         postsArray.sort( function (a,b){return b.post_id - a.post_id;});
         var clipped3RecentPosts = postsArray.slice(0,3);
         showSidebarPosts(clipped3RecentPosts);
@@ -84,12 +79,12 @@ $(document).ready(function () {
   sortPostsByRecent();
  
 //Populate header, footer, and sidebar from html template
-  function popTags() {
-    $("#header").load("../htmlTemplates/header.html");
-    $("#sidebar").load("../htmlTemplates/sidebar.html");
-    $("#footer").load("../htmlTemplates/footer.html");
-  }
-  popTags();
+  // function popTags() {
+  //   $("#header").load("../htmlTemplates/header.html");
+  //   $("#sidebar").load("../htmlTemplates/sidebar.html");
+  //   $("#footer").load("../htmlTemplates/footer.html");
+  // }
+  // popTags();
 
 });
 
