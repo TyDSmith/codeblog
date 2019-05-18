@@ -98,7 +98,8 @@ body {
 
 .sidebarPostTitles{
   color: #4AD057;
-  margin-bottom: 5px;
+  line-height: 1.25;
+  margin-bottom: 20px;
 }
 
 .sidebarPostTitles a{

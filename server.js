@@ -13,11 +13,6 @@ var connection = mysql.createConnection({
   password: "na0qh0mw3v80fvu7",
   port: 3306,
   database: "pq207a6dbgeya65s"
-  // host: "localhost",
-  // user: "webuser",
-  // password: "UCR",
-  // post: 3306,
-  // database: "bloggers_db"
 });
 
 connection.connect(function (err) {

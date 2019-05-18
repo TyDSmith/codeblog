@@ -10,9 +10,7 @@ global.document = document;
 
 var $ = jQuery = require('jquery')(window);
 
-
 module.exports = function (app) {
-
   app.get("/content/:id", function (req, res) {
     var sql = "SELECT * FROM Blogs where post_id=" + req.params.id + ";";
     connection.query(sql, function (err, sqlResult) {
@@ -29,7 +27,6 @@ module.exports = function (app) {
     });
 
   });
-
 
   // Load index page
   app.get("/", function (req, res) {
@@ -53,21 +50,9 @@ module.exports = function (app) {
     res.render("submit-post");
   });
 
-
-
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
   });
 
-
-
-
 };
-
-
-// function insertPostInfo(){
-//   console.log("woop");
-//   $('.single-post-content').html("testttttt");
-//   $('.single-post-content').append("test2");
-// };
