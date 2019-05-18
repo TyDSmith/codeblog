@@ -188,7 +188,8 @@ ul.article_list li img {
 .article_list_title{
   font-family: 'Oswald', sans-serif;
   font-size: 1.4em;
-  color: #4AD057
+  color: #4AD057;
+  text-transform: capitalize;
 }
 
 .article_list_title:hover{
