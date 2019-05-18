@@ -18,14 +18,9 @@ module.exports = function (app) {
         console.log("Oops somethings wrong");
         throw err;
       }
-      // console.log(sqlResult);
-      console.log('running');
       var hbsObject = sqlResult;
-      // console.log(hbsObject[0].content);
-      res.render("single-post", hbsObject[0]);
-
+      res.render("minimal-single", hbsObject[0]);
     });
-
   });
 
   // Load index page
@@ -44,6 +39,10 @@ module.exports = function (app) {
 
   app.get("/single-post", function (req, res) {
     res.render("single-post");
+  });
+
+  app.get("/minimal-single-post", function (req, res) {
+    res.render("minimal-single");
   });
 
   app.get("/submit", function (req, res) {
