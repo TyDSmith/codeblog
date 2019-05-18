@@ -154,8 +154,22 @@ $(document).ready(function () {
   // inside of loop, using handlebars/jquery to append dynmaclly
   // fiddle with it.
   
-  //Create widget that displays most recent posts
 
+
+  //Create widget that displays most recent posts
+  function showSidebarPosts(clipped3RecentPosts){
+    console.log('show sidebar');
+    for (i=0;i<clipped3RecentPosts.length;i++){
+      var openDiv = "<div class='sidebarPostTitles'>";
+      var closeDiv = "</div>";
+      var postTitle = "<a href=/content/" + clipped3RecentPosts[i].post_id + ">" + clipped3RecentPosts[i].title + "</a></div>";
+      $('#sidebar-content').append(
+        openDiv + postTitle + closeDiv
+      );
+    }
+  };
+
+  //Sort posts and limit to 3
   function sortPostsByRecent(){
     var postsArray = [];
     $.ajax({
@@ -164,29 +178,16 @@ $(document).ready(function () {
       success: function(data){
         var allPosts = data;
         console.log('all posts loaded');
-        
       }
     }).then( 
-
-    //   function sorting(allPosts, post_id) {
-    //     function sortByKey(a, b) {
-    //         var x = a[post_id];
-    //         var y = b[post_id];
-    //         return ((x > y) ? -1 : ((x < y) ? 1 : 0));
-    //     }
-    //     allPosts.sort(sortByKey);
-    //     console.log(allPosts);
-
-    // }
-      
       function sortRecentPosts(allPosts){
         for (i=0; i < allPosts.length; i++){
           postsArray.push(allPosts[i]);
         }
-        postsArray.sort( function ( a, b ) { return b.post_id - a.post_id; } );
+        postsArray.sort( function (a,b){return b.post_id - a.post_id;});
         var clipped3RecentPosts = postsArray.slice(0,3);
         console.log(clipped3RecentPosts);
-
+        showSidebarPosts(clipped3RecentPosts);
       })};
 
   sortPostsByRecent();

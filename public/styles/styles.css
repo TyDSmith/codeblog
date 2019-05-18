@@ -96,7 +96,19 @@ body {
   padding: 0px;
 }
 
+.sidebarPostTitles{
+  color: #4AD057;
+  margin-bottom: 5px;
+}
 
+.sidebarPostTitles a{
+  color: #4AD057;
+}
+
+.sidebarPostTitles a:hover{
+  color: #445252;
+  text-decoration: none;
+}
 /* Fake image */
 .fakeimg {
   /* background-color: #aaa; */
